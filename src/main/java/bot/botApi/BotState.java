@@ -1,0 +1,19 @@
+package bot.botApi;
+
+public enum BotState {
+    SHOW_CARD,
+    SHOW_CATEGORIES,
+    SHOW_MAIN_MENU,
+    SHOW_HELP_MENU,
+    SHOW_USER_PROFILE,
+    ASK_CATEGORIES,
+    ASK_NAME,
+    ASK_COUNTRY,
+    ASK_CITY,
+    ASK_ADDRESS,
+    ASK_PHONE,
+    ASK_EMAIL,
+    FILLING_PROFILE,
+    PROFILE_FILLED,
+    INSERT_INTO;
+}

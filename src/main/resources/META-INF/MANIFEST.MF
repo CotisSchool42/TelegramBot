@@ -1,0 +1,36 @@
+Manifest-Version: 1.0
+Main-Class: bot.Main
+Class-Path: spring-jcl-5.3.4.jar spring-boot-starter-logging-2.4.3.jar j
+ akarta.validation-api-2.0.2.jar spring-jdbc-5.3.4.jar log4j-to-slf4j-2.
+ 13.3.jar jakarta.ws.rs-api-2.1.6.jar tomcat-embed-core-9.0.43.jar sprin
+ g-context-5.3.4.jar jersey-media-json-jackson-2.32.jar j2objc-annotatio
+ ns-1.3.jar spring-beans-5.3.4.jar jackson-datatype-jdk8-2.11.4.jar http
+ core-4.4.13.jar postgresql-42.2.18.jar javassist-3.25.0-GA.jar spring-w
+ ebmvc-5.3.4.jar jakarta.xml.bind-api-2.3.2.jar spring-boot-2.4.3.jar hk
+ 2-api-2.6.1.jar spring-boot-starter-tomcat-2.4.3.jar hk2-locator-2.6.1.
+ jar spring-tx-5.3.4.jar jersey-media-jaxb-2.32.jar jackson-annotations-
+ 2.11.3.jar jul-to-slf4j-1.7.30.jar telegrambots-meta-5.1.1.jar spring-c
+ ore-5.3.4.jar slf4j-api-1.7.30.jar jersey-entity-filtering-2.32.jar tom
+ cat-embed-websocket-9.0.43.jar log4j-api-2.13.3.jar spring-boot-starter
+ -json-2.4.3.jar httpclient-4.5.13.jar classmate-1.3.4.jar guava-30.0-jr
+ e.jar jakarta.inject-2.6.1.jar grizzly-http-2.4.4.jar hibernate-validat
+ or-6.1.6.Final.jar spring-expression-5.3.4.jar telegrambots-spring-boot
+ -starter-5.1.1.jar jersey-client-2.32.jar osgi-resource-locator-1.0.3.j
+ ar jackson-databind-2.11.3.jar jakarta.activation-api-1.2.1.jar checker
+ -qual-3.5.0.jar grizzly-framework-2.4.4.jar telegrambots-5.1.1.jar comm
+ ons-logging-1.2.jar error_prone_annotations-2.3.4.jar jackson-jaxrs-bas
+ e-2.11.3.jar spring-boot-autoconfigure-2.4.3.jar jsr305-3.0.2.jar commo
+ ns-codec-1.11.jar json-20180813.jar jackson-core-2.11.3.jar spring-web-
+ 5.3.4.jar listenablefuture-9999.0-empty-to-avoid-conflict-with-guava.ja
+ r jakarta.annotation-api-1.3.5.jar jersey-server-2.32.jar jboss-logging
+ -3.3.2.Final.jar jackson-module-jaxb-annotations-2.11.3.jar jersey-cont
+ ainer-grizzly2-http-2.32.jar httpmime-4.5.13.jar failureaccess-1.0.1.ja
+ r logback-classic-1.2.3.jar jackson-datatype-jsr310-2.11.4.jar jakarta.
+ el-3.0.3.jar logback-core-1.2.3.jar jackson-module-parameter-names-2.11
+ .4.jar snakeyaml-1.27.jar aopalliance-repackaged-2.6.1.jar commons-coll
+ ections4-4.4.jar commons-io-2.8.0.jar jakarta.activation-1.2.2.jar hk2-
+ utils-2.6.1.jar jersey-hk2-2.32.jar grizzly-http-server-2.4.4.jar sprin
+ g-boot-starter-web-2.4.3.jar annotations-20.1.0.jar spring-aop-5.3.4.ja
+ r jackson-jaxrs-json-provider-2.11.3.jar jersey-common-2.32.jar spring-
+ boot-starter-2.4.3.jar
+
