@@ -21,7 +21,7 @@ import java.io.File;
 import java.io.IOException;
 
 @Data
-@EqualsAndHashCode(callSuper=false)
+@EqualsAndHashCode(callSuper = false)
 @Slf4j
 public class VladimirovichBot extends TelegramWebhookBot {
 
@@ -30,7 +30,9 @@ public class VladimirovichBot extends TelegramWebhookBot {
     private String webHookPath;
     private Facade facade;
 
-    public  VladimirovichBot(Facade facade) { this.facade = facade; }
+    public VladimirovichBot(Facade facade) {
+        this.facade = facade;
+    }
 
     @Override
     public String getBotUsername() {
@@ -43,7 +45,7 @@ public class VladimirovichBot extends TelegramWebhookBot {
     }
 
     @Override
-    public String getBotPath(){
+    public String getBotPath() {
         return webHookPath;
     }
 
@@ -59,8 +61,8 @@ public class VladimirovichBot extends TelegramWebhookBot {
     }
 
     @SneakyThrows
-    public void  sendMainBotPhoto(long chatId, String imageCaption, String imagePath) {
-        File image = ResourceUtils.getFile("classpath:" + imagePath);
+    public void sendMainBotPhoto(long chatId, String imageCaption, String imagePath) {
+        File image = ResourceUtils.getFile("/Users/over/TelegramBot/src/main/resources/" + imagePath);
 
         SendPhoto sendPhoto = new SendPhoto();
         sendPhoto.setChatId(String.valueOf(chatId));
@@ -72,35 +74,37 @@ public class VladimirovichBot extends TelegramWebhookBot {
 
     @SneakyThrows
     public void sendProductPhoto(long chatId, Product product, InlineKeyboardMarkup inlineKeyboardMarkup) {
-        File image = ResourceUtils.getFile("classpath:" + product.getPhoto_url());
+       /* File image = ResourceUtils.getFile("classpath:" + product.getPhoto_url());*/
+        File image = ResourceUtils.getFile(product.getPhoto_url());
 
         SendPhoto sendPhoto = new SendPhoto();
         sendPhoto.setReplyMarkup(inlineKeyboardMarkup);
         sendPhoto.setChatId(String.valueOf(chatId));
         sendPhoto.setCaption(product.getName() + "\n\n" + product.getProduct_description()
-                + "\n\n" +  "Price: " + product.getPrice() + "\uD83D\uDCB2");
+                + "\n\n" + "Price: " + product.getPrice() + "\uD83D\uDCB2");
         InputFile imag = new InputFile().setMedia(image);
         sendPhoto.setPhoto(imag);
 
-
-        execute(sendPhoto);
+        try {
+            execute(sendPhoto);
+        } catch (TelegramApiRequestException e) {
+            log.info("TelegramApiRequestException Message: {}", e.getMessage());
+        }
     }
 
     public void sendBucket(SendPhoto sendPhoto) throws TelegramApiException {
         try {
             execute(sendPhoto);
         } catch (TelegramApiRequestException e) {
-            System.out.println("Message: " + e.getMessage());
+            log.info("TelegramApiRequestException Message: {}", e.getMessage());
         }
     }
 
-// Исключения кидать в логер
     public void editMessageMedia(EditMessageMedia editMessageMedia) throws TelegramApiException {
         try {
             execute(editMessageMedia);
         } catch (TelegramApiRequestException e) {
-            System.out.println("Message: " + e.getMessage());
+            log.info("TelegramApiRequestException Message: {}", e.getMessage());
         }
     }
 }
-

@@ -120,7 +120,7 @@ public class CardService extends ProductService {
         int totalOfCurrentProd = numberProductsInBasket(product.getName(), userId);
         BucketKeyboard bucketKeyboard = new BucketKeyboard(setProducts.size(), currentProd , totalOfCurrentProd, product);
 
-        InputStream url = new URL("classpath:" + product.getPhoto_url()).openStream();
+        InputStream url = new URL("file://" + product.getPhoto_url()).openStream();
         InputMediaPhoto inputMediaPhoto = new InputMediaPhoto();
         inputMediaPhoto.setMedia(url, product.getPhoto_url());
         inputMediaPhoto.setCaption(product.getName() + "\n\n" + product.getProduct_description() + "\n\n" + "Price: " + product.getPrice()
@@ -145,7 +145,7 @@ public class CardService extends ProductService {
         int totalOfCurrentProd = numberProductsInBasket(product.getName(), userId);
         BucketKeyboard bucketKeyboard = new BucketKeyboard(products.size(), 0, totalOfCurrentProd, product);
 
-        File image = ResourceUtils.getFile("classpath:" + product.getPhoto_url());
+        File image = ResourceUtils.getFile(product.getPhoto_url());
         SendPhoto sendPhoto = new SendPhoto();
         sendPhoto.setReplyMarkup(bucketKeyboard.getInlineMessageButtons());
         sendPhoto.setChatId(String.valueOf(chatId));
@@ -181,9 +181,7 @@ public class CardService extends ProductService {
 }
 
 
-/**
- * Ниже предсталвен пример корзины без фотографий. Отлично подойдет для магазина услуг
- */
+/** Ниже представлен пример корзины без фотографий. Отлично подойдет для магазина услуг */
 
 /*    public SendMessage showCard(Long userId) {
         List<Product> products = card.get(userId);

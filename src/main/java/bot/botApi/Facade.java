@@ -5,7 +5,6 @@ import bot.cache.UserDataCache;
 import bot.entities.Product;
 import bot.service.*;
 
-import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 
 import org.springframework.context.annotation.Lazy;
@@ -21,12 +20,10 @@ import org.telegram.telegrambots.meta.api.objects.Update;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.InlineKeyboardMarkup;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 
-import javax.swing.*;
 import java.io.IOException;
 
-/**
- * Опеределяет есть ли сообщение, есть ли запрос от кнопок, обрабатывает сообщение
- */
+/** Определяет есть ли сообщение, есть ли запрос от кнопок, обрабатывает сообщение */
+
 @Slf4j
 @Component
 public class Facade {
@@ -60,8 +57,7 @@ public class Facade {
         Message message = update.getMessage();
         if (message != null && message.hasText()) {
             try {
-                log.info("New message from User:{}, chatId: {},  with text: {}",
-                        message.getFrom().getUserName(), message.getChatId(), message.getText());
+                log.info("New message from User:{}, chatId: {},  with text: {}", message.getFrom().getUserName(), message.getChatId(), message.getText());
                 replyMessage = handleInputMessage(message);
             } catch (NullPointerException e) {
                 return null;
@@ -97,10 +93,6 @@ public class Facade {
         replyMessage = botStateContext.processInputMessage(botState, message);
         return replyMessage;
     }
-
-    //НАПИСАТЬ РЕДАКТИРОВАНИЕ СТРОК И ВНОС ИХ В БД,
-    // ДАЛЕЕ ДОВЕСТИ БОТА В ПРОД, НАПИСАТЬ ДОКУМЕНТАЦИЮ, ПРОВЕСТИ КОММЕНТАРИИ И ПОЧИСТИТЬ !!!
-
 
     private BotApiMethod<?> processCallbackQuery(CallbackQuery buttonQuery) throws TelegramApiException, IOException {
         final long chatId = buttonQuery.getMessage().getChatId();

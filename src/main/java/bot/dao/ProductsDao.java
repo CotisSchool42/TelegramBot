@@ -1,6 +1,5 @@
 package bot.dao;
 
-import bot.entities.Category;
 import bot.entities.Product;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;

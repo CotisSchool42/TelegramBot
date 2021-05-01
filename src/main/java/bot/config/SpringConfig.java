@@ -9,22 +9,30 @@ import org.springframework.context.annotation.*;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
+
 import javax.sql.DataSource;
-
-
 
 @Data
 @ComponentScan("bot")
 @PropertySource("classpath:application.properties")
-@Configuration
 @ConfigurationProperties(prefix = "telegram")
-public class SpringConfig{
+@Configuration
+public class SpringConfig {
 
     private String userName;
     private String botToken;
     private String webHookPath;
 
+    private String dbClassName;
+    private String dbUrl;
+    private String dbUserName;
+    private String dbPassword;
 
+    /** Создается объект бина (Spring создает объект класса VladimirovichBot и внедряет в него зависимости).
+     *  setWebHookPath устанавливает адрес на который Telegram API будет оправлять запросы.
+     *  setBotToken устанавливаем токен для бота, который выдает BotFather
+     *  setUserName устанавливаем бота (также указывается при создании в BotFather)
+     */
     @Bean
     public VladimirovichBot vladimirovichBot(Facade facade) {
         VladimirovichBot vladimirovichBot = new VladimirovichBot(facade);
@@ -34,6 +42,9 @@ public class SpringConfig{
         return vladimirovichBot;
     }
 
+    /**
+     * Интерфейс для разрешения сообщений с поддержкой параметризации и интернационализации таких сообщений.
+     */
     @Bean
     public MessageSource messageSource() {
         ReloadableResourceBundleMessageSource messageSource =
@@ -43,22 +54,27 @@ public class SpringConfig{
         return messageSource;
     }
 
-    /* Нужно для того чтобы Spring знал к какой БД подключаться */
-   @Bean
+    /**
+     * Класс JdbcTemplate является центральным классом в базовом пакете JDBC. Он выполняет основной
+     * рабочий процесс JDBC, оставляя код приложения для предоставления SQL и извлечения результатов.
+     * Этот класс выполняет запросы или обновления SQL
+     */
+    @Bean
     public JdbcTemplate jdbcTemplate() {
         return new JdbcTemplate(dataSource());
     }
 
-
+    /**
+     * JDBC DataSource объекты используются для получения физического соединения с базой данных
+     */
     @Bean
     public DataSource dataSource() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
-        /* Эти данные нужно вынести в отдельный файл */
-        dataSource.setDriverClassName("org.postgresql.Driver");
-        dataSource.setUrl("jdbc:postgresql://localhost:5432/postgres");
-        dataSource.setUsername("over");
+        dataSource.setDriverClassName(dbClassName);
+        dataSource.setUrl(dbUrl);
+        dataSource.setUsername(dbUserName);
+        dataSource.setPassword(dbPassword);
         return dataSource;
     }
-
 }
 

@@ -37,7 +37,7 @@ public class ConfirmationButtons {
         KeyboardRow row1 = new KeyboardRow();
         row1.add(new KeyboardButton("Back \uD83D\uDD19"));
         row1.add(new KeyboardButton("Edit \uD83D\uDEAB"));
-        row1.add(new KeyboardButton("Checkout ✅"));
+        row1.add(new KeyboardButton("Process payment ✅"));
         keyboard.add(row1);
         replyKeyboardMarkup.setKeyboard(keyboard);
         return replyKeyboardMarkup;

@@ -7,8 +7,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ProductKeyboard {
-    private String productName;
-    private Integer numberProductsInBasket;
+    private final String productName;
+    private final Integer numberProductsInBasket;
 
     public ProductKeyboard(String productName, Integer numberProductsInBasket) {
         this.productName = productName;
@@ -24,7 +24,6 @@ public class ProductKeyboard {
         InlineKeyboardButton inlineCatalog = new InlineKeyboardButton();
         InlineKeyboardButton inlineCard = new InlineKeyboardButton();
 
-        //➖➕
         inlineMinus.setText("Drop ➖");
         inlineNumber.setText("Pcs. " + numberProductsInBasket);
         inlinePlus.setText("Add ➕");

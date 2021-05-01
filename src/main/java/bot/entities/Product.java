@@ -8,8 +8,8 @@ public class Product {
     private int id;
 
     private String photo_url;
-
-    private Integer categoryId;
+//categoryId
+    private Integer category;
 
     private String name;
 

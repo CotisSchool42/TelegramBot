@@ -53,7 +53,7 @@ public class ProductService {
         List<Product> productsCategory = new ArrayList<>();
 
         for (Product product : productsDao.index()) {
-            if (id == product.getCategoryId()) {
+            if (id == product.getCategory()) {
                 productsCategory.add(product);
             }
         }

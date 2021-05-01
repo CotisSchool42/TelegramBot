@@ -144,21 +144,22 @@ public class FillingProfileHandler implements InputMessageHandler {
             userDataCache.setUsersCurrentBotState(userId, BotState.ASK_EMAIL);
         }
 
-        if (botState.equals(BotState.PROFILE_FILLED) && !usersAnswer.equals("Checkout ✅")) {
+        if (botState.equals(BotState.PROFILE_FILLED) && !usersAnswer.equals("Process payment ✅")) {
             replyToUser = new SendMessage(String.valueOf(chatId), "User data:\n\n" + profileData.toString());
             replyToUser.setReplyMarkup(new ConfirmationButtons().getPayKeyboard());
             System.out.println(profileData);
         }
-        if (botState.equals(BotState.PROFILE_FILLED) && usersAnswer.equals("Checkout ✅")) {
+        // Process payment
+        if (botState.equals(BotState.PROFILE_FILLED) && usersAnswer.equals("Process payment ✅")) {
 
             MainMenuService mainMenuService = new MainMenuService();
-            replyToUser =  new SendMessage(String.valueOf(chatId), "Main Menu \uD83D\uDECD");
-            replyToUser.setReplyMarkup(mainMenuService.getMainMenuKeyboard());
-            userDataCache.setUsersCurrentBotState(userId, BotState.SHOW_MAIN_MENU);
-            clientService.setClient(userId, profileData);
+            replyToUser =  new SendMessage(String.valueOf(chatId), "Main Menu \uD83D\uDECD"); // Пишет сообщение Main Menu
+            replyToUser.setReplyMarkup(mainMenuService.getMainMenuKeyboard());                     // Устанавливает клавиатуру
+            userDataCache.setUsersCurrentBotState(userId, BotState.SHOW_MAIN_MENU);                // Переводит состояние бота в показать меню
+            clientService.setClient(userId, profileData);                                          // Добавляет клиента в базу данных (желательно не трогать)
         }
-
-        userDataCache.saveUserCardData(userId, profileData);
+       //  - Сбербанк TEST: 401643678:TEST:d59b4143-69ca-4d31-972e-371c6ff370a7 2021-04-12 13:10
+        userDataCache.saveUserCardData(userId, profileData);                                       // Сохраняет состояние, а выше устанавливает состояние
 
         return replyToUser;
     }
