@@ -1,6 +1,7 @@
 package bot.botApi;
 
 import bot.VladimirovichBot;
+import bot.botApi.Checkout.CheckoutHandler;
 import bot.cache.UserDataCache;
 import bot.entities.Product;
 import bot.service.*;
@@ -9,7 +10,9 @@ import lombok.extern.slf4j.Slf4j;
 
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
+import org.telegram.telegrambots.meta.api.methods.AnswerPreCheckoutQuery;
 import org.telegram.telegrambots.meta.api.methods.BotApiMethod;
+import org.telegram.telegrambots.meta.api.methods.send.SendInvoice;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.methods.send.SendPhoto;
 import org.telegram.telegrambots.meta.api.methods.updatingmessages.EditMessageMedia;
@@ -17,10 +20,13 @@ import org.telegram.telegrambots.meta.api.methods.updatingmessages.EditMessageRe
 import org.telegram.telegrambots.meta.api.objects.CallbackQuery;
 import org.telegram.telegrambots.meta.api.objects.Message;
 import org.telegram.telegrambots.meta.api.objects.Update;
+import org.telegram.telegrambots.meta.api.objects.payments.LabeledPrice;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.InlineKeyboardMarkup;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 /** Определяет есть ли сообщение, есть ли запрос от кнопок, обрабатывает сообщение */
 
@@ -52,6 +58,17 @@ public class Facade {
             log.info("New callbackQuery from User: {}, userId: {}, with data: {}", update.getCallbackQuery().getFrom().getUserName(),
                     update.getCallbackQuery().getFrom().getId(), update.getCallbackQuery().getData());
             return processCallbackQuery(callbackQuery);
+        }
+
+        if (update.hasPreCheckoutQuery()) {
+            log.info("PreCheckout {}", update.getPreCheckoutQuery());
+
+            AnswerPreCheckoutQuery answerPreCheckoutQuery = new AnswerPreCheckoutQuery();
+
+            answerPreCheckoutQuery.setPreCheckoutQueryId(update.getPreCheckoutQuery().getId());
+            answerPreCheckoutQuery.setOk(true);
+
+            return answerPreCheckoutQuery;
         }
 
         Message message = update.getMessage();
@@ -136,11 +153,18 @@ public class Facade {
             }
 
         } else if (data.equals("Checkout now ✅")) {
+//            if (productService.getCardService().bucketIsEmpty(userId))
+//               return mainMenuService.getMainMenuMessage(chatId, "Empty bucket");
             if (productService.getCardService().bucketIsEmpty(userId))
-               return mainMenuService.getMainMenuMessage(chatId, "Empty bucket");
+                return mainMenuService.getMainMenuMessage(chatId, "Empty bucket");
 
-            userDataCache.setUsersCurrentBotState(userId, BotState.ASK_NAME);
-            callBackAnswer = messagesService.getReplyMessage(chatId, "reply.askName");
+
+            return CheckoutHandler.getIncoice();
+            /* userDataCache.setUsersCurrentBotState(userId, BotState.ASK_NAME);
+            callBackAnswer = messagesService.getReplyMessage(chatId, "reply.askName");*/
+
+ //           userDataCache.setUsersCurrentBotState(userId, BotState.ASK_NAME);
+ //           callBackAnswer = messagesService.getReplyMessage(chatId, "reply.askName");
         } else {
             userDataCache.setUsersCurrentBotState(userId, BotState.SHOW_MAIN_MENU);
             callBackAnswer = null;
