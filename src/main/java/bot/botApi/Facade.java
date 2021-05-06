@@ -8,6 +8,7 @@ import bot.service.*;
 
 import lombok.extern.slf4j.Slf4j;
 
+import org.checkerframework.checker.units.qual.C;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.meta.api.methods.AnswerPreCheckoutQuery;
@@ -157,9 +158,8 @@ public class Facade {
 //               return mainMenuService.getMainMenuMessage(chatId, "Empty bucket");
             if (productService.getCardService().bucketIsEmpty(userId))
                 return mainMenuService.getMainMenuMessage(chatId, "Empty bucket");
-
-
-            return CheckoutHandler.getIncoice();
+            CheckoutHandler checkoutHandler = new CheckoutHandler();
+            return checkoutHandler.preCheckout(userId);//.getIncoice();
             /* userDataCache.setUsersCurrentBotState(userId, BotState.ASK_NAME);
             callBackAnswer = messagesService.getReplyMessage(chatId, "reply.askName");*/
 

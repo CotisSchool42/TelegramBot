@@ -123,7 +123,7 @@ public class CardService extends ProductService {
         InputStream url = new URL("file://" + product.getPhoto_url()).openStream();
         InputMediaPhoto inputMediaPhoto = new InputMediaPhoto();
         inputMediaPhoto.setMedia(url, product.getPhoto_url());
-        inputMediaPhoto.setCaption(product.getName() + "\n\n" + product.getProduct_description() + "\n\n" + "Price: " + product.getPrice()
+        inputMediaPhoto.setCaption(product.getName() + "\n\n" + product.getProductDescription() + "\n\n" + "Price: " + product.getPrice()
                 + "\uD83D\uDCB2" + "\n" + "Total price: " + productTotalPrice(card.get(userId)) + "\uD83D\uDCB2");
 
         return new EditMessageMedia(String.valueOf(chatId), messageId, inlineMessageId, inputMediaPhoto, bucketKeyboard.getInlineMessageButtons());
@@ -149,7 +149,7 @@ public class CardService extends ProductService {
         SendPhoto sendPhoto = new SendPhoto();
         sendPhoto.setReplyMarkup(bucketKeyboard.getInlineMessageButtons());
         sendPhoto.setChatId(String.valueOf(chatId));
-        sendPhoto.setCaption(product.getName() + "\n\n" + product.getProduct_description() + "\n\n" + "Price: "
+        sendPhoto.setCaption(product.getName() + "\n\n" + product.getProductDescription() + "\n\n" + "Price: "
                 + product.getPrice() + "\uD83D\uDCB2" + "\n" + "Total price: " + productTotalPrice(card.get(userId)) + "\uD83D\uDCB2");
         InputFile imag = new InputFile().setMedia(image);
         sendPhoto.setPhoto(imag);

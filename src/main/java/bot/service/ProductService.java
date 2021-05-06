@@ -15,13 +15,13 @@ import java.util.*;
 @Data
 @Service
 public class ProductService {
-    private final Map<Long, List<Product>> cart = new HashMap<>();
+    private static final Map<Long, List<Product>> cart = new HashMap<>();
     private ProductsDao productsDao;
     private CategoriesDao categoriesDao;
     private CardService cardService;
     private CategoryService categoryService;
 
-    public Map<Long, List<Product>> getCard() {
+    public static Map<Long, List<Product>> getCard() {
         return cart;
     }
 
