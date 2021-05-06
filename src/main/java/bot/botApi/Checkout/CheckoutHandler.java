@@ -22,6 +22,10 @@ public class CheckoutHandler {
         List<LabeledPrice> labeledPrice = new ArrayList<>();
         List<Product> listOfProducts = new ArrayList<>(ProductService.getCard().get(userId));
         listOfProducts.forEach(product -> {
+            //цена должна быть не менее 75 рублей
+            //АККУРАТНО
+            //здесь цена в копейках, поэтому домножается на сто
+            //если инвойс не присылается, и никаких ошибок - цена либо слишком большая, либо слишком маленькая
             LabeledPrice l = new LabeledPrice(product.getName(), (int)product.getPrice() * 100);
             labeledPrice.add(l);
         });
