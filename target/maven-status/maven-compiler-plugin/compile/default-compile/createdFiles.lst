@@ -1,4 +1,7 @@
+bot/entities/Order.class
 bot/dao/CategoriesDao.class
+bot/entities/OrderList.class
+bot/botApi/handlers/CheckoutHandler.class
 bot/botApi/Facade.class
 bot/entities/Client.class
 bot/botApi/BotStateContext.class
@@ -10,12 +13,11 @@ bot/dao/ProductsDao.class
 bot/service/ReplyMessagesService.class
 bot/botApi/BotState.class
 bot/cache/UserDataCache.class
+bot/dao/OrdersDao.class
 bot/config/SpringConfig.class
 bot/service/CardService.class
-bot/replyKeyboards/ConfirmationButtons.class
 bot/botApi/handlers/HelpMenuHandler.class
 bot/service/CategoryService.class
-bot/botApi/handlers/FillingProfileHandler.class
 bot/botApi/handlers/CardHandler.class
 bot/service/ClientService.class
 bot/botApi/handlers/CategoriesHandler.class
