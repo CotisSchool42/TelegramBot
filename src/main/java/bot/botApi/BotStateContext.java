@@ -24,13 +24,13 @@ public class BotStateContext {
 
     private InputMessageHandler findMessageHandler(BotState currentState) {
 
-        if (isFillingProfileState(currentState)) {
+/*        if (isFillingProfileState(currentState)) {
             return messageHandlers.get(BotState.FILLING_PROFILE);
-        }
+        }*/
         return messageHandlers.get(currentState);
     }
 
-    private boolean isFillingProfileState(BotState currentState) {
+/*    private boolean isFillingProfileState(BotState currentState) {
         switch (currentState) {
             case ASK_NAME:
             case ASK_COUNTRY:
@@ -44,5 +44,5 @@ public class BotStateContext {
             default:
                 return false;
         }
-    }
+    }*/
 }

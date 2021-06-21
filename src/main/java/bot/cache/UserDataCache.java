@@ -18,7 +18,6 @@ public class UserDataCache implements DataCache {
     }
 
 
-
     @Override
     public BotState getUsersCurrentBotState(long userId) {
         BotState botState = usersBotStates.get(userId);

@@ -18,7 +18,6 @@ public class Client {
     @NotEmpty
     private String phone;
 
-    @NotEmpty(message = "Email should not be empty")
     @Email(message = "Email should be valid")
     private String email;
 

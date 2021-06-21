@@ -51,7 +51,7 @@ public class VladimirovichBot extends TelegramWebhookBot {
 
     @Override
     public BotApiMethod<?> onWebhookUpdateReceived(Update update) {
-
+        System.out.println(update);
         try {
             return facade.handleUpdate(update);
         } catch (IOException | TelegramApiException e) {
@@ -63,7 +63,6 @@ public class VladimirovichBot extends TelegramWebhookBot {
     @SneakyThrows
     public void sendMainBotPhoto(long chatId, String imageCaption, String imagePath) {
         File image = ResourceUtils.getFile("/Users/over/TelegramBot/src/main/resources/" + imagePath);
-
         SendPhoto sendPhoto = new SendPhoto();
         sendPhoto.setChatId(String.valueOf(chatId));
         sendPhoto.setCaption(imageCaption);
@@ -74,13 +73,12 @@ public class VladimirovichBot extends TelegramWebhookBot {
 
     @SneakyThrows
     public void sendProductPhoto(long chatId, Product product, InlineKeyboardMarkup inlineKeyboardMarkup) {
-       /* File image = ResourceUtils.getFile("classpath:" + product.getPhoto_url());*/
         File image = ResourceUtils.getFile(product.getPhoto_url());
 
         SendPhoto sendPhoto = new SendPhoto();
         sendPhoto.setReplyMarkup(inlineKeyboardMarkup);
         sendPhoto.setChatId(String.valueOf(chatId));
-        sendPhoto.setCaption(product.getName() + "\n\n" + product.getProduct_description()
+        sendPhoto.setCaption(product.getName() + "\n\n" + product.getProductDescription()
                 + "\n\n" + "Price: " + product.getPrice() + "\uD83D\uDCB2");
         InputFile imag = new InputFile().setMedia(image);
         sendPhoto.setPhoto(imag);

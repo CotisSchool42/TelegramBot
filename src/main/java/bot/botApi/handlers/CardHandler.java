@@ -11,12 +11,10 @@ import org.telegram.telegrambots.meta.api.objects.Message;
 
 @Component
 public class CardHandler implements InputMessageHandler {
-    private CardService cardService;
     private UserDataCache userDataCache;
 
     @Autowired
-    public CardHandler(CardService cardService, UserDataCache userDataCache) {
-        this.cardService = cardService;
+    public CardHandler(UserDataCache userDataCache) {
         this.userDataCache = userDataCache;
     }
 

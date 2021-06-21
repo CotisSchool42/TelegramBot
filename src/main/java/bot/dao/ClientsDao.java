@@ -9,6 +9,8 @@ import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
+import org.telegram.telegrambots.meta.api.objects.payments.PreCheckoutQuery;
+import org.telegram.telegrambots.meta.api.objects.payments.SuccessfulPayment;
 
 import java.util.List;
 import java.util.regex.Matcher;
@@ -70,10 +72,13 @@ public class ClientsDao {
         jdbcTemplate.update("UPDATE client SET name=? WHERE id=?", client.getName(), id);
     }
 
-    public void addClient(long userId, UserCardData userDataCache) {
+    public void addClient(long userId, SuccessfulPayment successfulPayment) {
         String sql = "INSERT INTO client(name, email, phone, country, status, tg_id, city, address) VALUES (?,?,?,?,?,?,?,?)";
-        jdbcTemplate.update(sql, userDataCache.getName(), userDataCache.getEmail(), userDataCache.getPhone(), userDataCache.getCountry(), true, userId,
-                userDataCache.getCity(), userDataCache.getAddress());
+        jdbcTemplate.update(sql, successfulPayment.getOrderInfo().getName(), successfulPayment.getOrderInfo().getEmail(),
+                successfulPayment.getOrderInfo().getPhoneNumber(), successfulPayment.getOrderInfo().getShippingAddress().getState(),
+                true, userId, successfulPayment.getOrderInfo().getShippingAddress().getCity(),
+                successfulPayment.getOrderInfo().getShippingAddress().getStreetLine1() + " " +
+                        successfulPayment.getOrderInfo().getShippingAddress().getStreetLine2());
     }
 
 }

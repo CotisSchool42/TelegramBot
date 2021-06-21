@@ -25,7 +25,7 @@ import java.util.*;
 @Service
 public class CardService extends ProductService {
     private final ProductsDao productsDao;
-    private final Map<Long, List<Product>> card = super.getCard();
+    private final Map<Long, List<Product>> card = getCard();
 
     public CardService(ProductsDao productsDao) {
         this.productsDao = productsDao;
@@ -34,7 +34,8 @@ public class CardService extends ProductService {
     public void addToCard(Long userId, String data) {
         for (Product product : productsDao.index()) {
             if (product.getName().equals(data))
-                card.computeIfAbsent(userId, k -> new ArrayList<>()).add(product); }
+                card.computeIfAbsent(userId, k -> new ArrayList<>()).add(product);
+        }
     }
 
     public Integer numberProductsInBasket(String productName, long userId) {
@@ -45,10 +46,12 @@ public class CardService extends ProductService {
 
             for (Product product : list) {
                 if (product.getName().equals(productName))
-                    i++; }
+                    i++;
+            }
             return i;
         } catch (NullPointerException e) {
-            return i; }
+            return i;
+        }
     }
 
     public void dropFromCard(Long userId, String data) {
@@ -57,7 +60,8 @@ public class CardService extends ProductService {
         for (Product product : list) {
             if (product.getName().equals(data)) {
                 list.remove(product);
-                break; }
+                break;
+            }
         }
         card.put(userId, list);
 
@@ -118,7 +122,7 @@ public class CardService extends ProductService {
         }
 
         int totalOfCurrentProd = numberProductsInBasket(product.getName(), userId);
-        BucketKeyboard bucketKeyboard = new BucketKeyboard(setProducts.size(), currentProd , totalOfCurrentProd, product);
+        BucketKeyboard bucketKeyboard = new BucketKeyboard(setProducts.size(), currentProd, totalOfCurrentProd, product);
 
         InputStream url = new URL("file://" + product.getPhoto_url()).openStream();
         InputMediaPhoto inputMediaPhoto = new InputMediaPhoto();
@@ -166,7 +170,7 @@ public class CardService extends ProductService {
         } else if (data.charAt(0) == '+' || data.startsWith("<")) {
             addToCard(userId, data.substring(1));
             numberOfProduct++;
-        } else if ((data.charAt(0) == '-' || data.startsWith(">")) && numberOfProduct != 0 ) {
+        } else if ((data.charAt(0) == '-' || data.startsWith(">")) && numberOfProduct != 0) {
             dropFromCard(userId, data.substring(1));
             numberOfProduct--;
         }

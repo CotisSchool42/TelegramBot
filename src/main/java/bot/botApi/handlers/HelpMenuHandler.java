@@ -28,5 +28,4 @@ public class HelpMenuHandler implements InputMessageHandler {
         return BotState.SHOW_HELP_MENU;
     }
 
-
 }

@@ -1,19 +1,18 @@
 package bot.botApi;
 
 import bot.VladimirovichBot;
-import bot.botApi.Checkout.CheckoutHandler;
+import bot.botApi.handlers.CheckoutHandler;
 import bot.cache.UserDataCache;
 import bot.entities.Product;
 import bot.service.*;
 
 import lombok.extern.slf4j.Slf4j;
 
-import org.checkerframework.checker.units.qual.C;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.meta.api.methods.AnswerPreCheckoutQuery;
 import org.telegram.telegrambots.meta.api.methods.BotApiMethod;
-import org.telegram.telegrambots.meta.api.methods.send.SendInvoice;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.methods.send.SendPhoto;
 import org.telegram.telegrambots.meta.api.methods.updatingmessages.EditMessageMedia;
@@ -21,25 +20,30 @@ import org.telegram.telegrambots.meta.api.methods.updatingmessages.EditMessageRe
 import org.telegram.telegrambots.meta.api.objects.CallbackQuery;
 import org.telegram.telegrambots.meta.api.objects.Message;
 import org.telegram.telegrambots.meta.api.objects.Update;
-import org.telegram.telegrambots.meta.api.objects.payments.LabeledPrice;
+import org.telegram.telegrambots.meta.api.objects.payments.PreCheckoutQuery;
+import org.telegram.telegrambots.meta.api.objects.payments.SuccessfulPayment;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.InlineKeyboardMarkup;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 /** Определяет есть ли сообщение, есть ли запрос от кнопок, обрабатывает сообщение */
 
 @Slf4j
 @Component
 public class Facade {
+    private CheckoutHandler checkoutHandler;
     private final BotStateContext botStateContext;
     private final UserDataCache userDataCache;
     private final MainMenuService mainMenuService;
     private final ReplyMessagesService messagesService;
     private final VladimirovichBot vladimirovichBot;
     private final ProductService productService;
+
+    @Autowired
+    public void setCheckoutHandler(CheckoutHandler checkoutHandler) {
+        this.checkoutHandler = checkoutHandler;
+    }
 
     public Facade(@Lazy VladimirovichBot vladimirovichBot, ReplyMessagesService messagesService, ProductService productService,
                   BotStateContext botStateContext, UserDataCache userDataCache, MainMenuService mainMenuService) {
@@ -62,14 +66,16 @@ public class Facade {
         }
 
         if (update.hasPreCheckoutQuery()) {
-            log.info("PreCheckout {}", update.getPreCheckoutQuery());
+            PreCheckoutQuery preCheckoutQuery = update.getPreCheckoutQuery();
+            log.info("PreCheckout {}", preCheckoutQuery);
+            return  productService.getClientService().setAnswerPreCheckoutQuery(preCheckoutQuery);
+        }
 
-            AnswerPreCheckoutQuery answerPreCheckoutQuery = new AnswerPreCheckoutQuery();
+        if (update.getMessage().hasSuccessfulPayment()) {
+            SuccessfulPayment successfulPayment = update.getMessage().getSuccessfulPayment();
+            Long userId = update.getMessage().getFrom().getId();
 
-            answerPreCheckoutQuery.setPreCheckoutQueryId(update.getPreCheckoutQuery().getId());
-            answerPreCheckoutQuery.setOk(true);
-
-            return answerPreCheckoutQuery;
+            return productService.getClientService().setClient(successfulPayment, userId);
         }
 
         Message message = update.getMessage();
@@ -117,9 +123,7 @@ public class Facade {
         final int messageId = buttonQuery.getMessage().getMessageId();
         final long userId = buttonQuery.getFrom().getId();
         final String data = buttonQuery.getData();
-
         BotApiMethod<?> callBackAnswer;
-        // = mainMenuService.getMainMenuMessage(chatId, "Use the main menu");
 
         if (data.equals("categories")) {
             SendMessage replyToUser = messagesService.getReplyMessage(chatId, "reply.askCategory");
@@ -154,17 +158,9 @@ public class Facade {
             }
 
         } else if (data.equals("Checkout now ✅")) {
-//            if (productService.getCardService().bucketIsEmpty(userId))
-//               return mainMenuService.getMainMenuMessage(chatId, "Empty bucket");
             if (productService.getCardService().bucketIsEmpty(userId))
                 return mainMenuService.getMainMenuMessage(chatId, "Empty bucket");
-            CheckoutHandler checkoutHandler = new CheckoutHandler();
-            return checkoutHandler.preCheckout(userId);//.getIncoice();
-            /* userDataCache.setUsersCurrentBotState(userId, BotState.ASK_NAME);
-            callBackAnswer = messagesService.getReplyMessage(chatId, "reply.askName");*/
-
- //           userDataCache.setUsersCurrentBotState(userId, BotState.ASK_NAME);
- //           callBackAnswer = messagesService.getReplyMessage(chatId, "reply.askName");
+            return checkoutHandler.preCheckout(userId);
         } else {
             userDataCache.setUsersCurrentBotState(userId, BotState.SHOW_MAIN_MENU);
             callBackAnswer = null;

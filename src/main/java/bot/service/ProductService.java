@@ -6,6 +6,7 @@ import bot.entities.Category;
 import bot.entities.Product;
 import bot.inlineKeyboards.ProductKeyboard;
 import lombok.Data;
+import org.checkerframework.checker.units.qual.C;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.InlineKeyboardMarkup;
@@ -20,6 +21,7 @@ public class ProductService {
     private CategoriesDao categoriesDao;
     private CardService cardService;
     private CategoryService categoryService;
+    private ClientService clientService;
 
     public static Map<Long, List<Product>> getCard() {
         return cart;
@@ -29,11 +31,13 @@ public class ProductService {
     }
 
     @Autowired
-    public ProductService(ProductsDao productsDao, CategoriesDao categoriesDao, CardService cardService, CategoryService categoryService) {
+    public ProductService(ProductsDao productsDao, CategoriesDao categoriesDao, ClientService clientService,
+                          CardService cardService, CategoryService categoryService) {
         this.productsDao = productsDao;
         this.categoriesDao = categoriesDao;
         this.cardService = cardService;
         this.categoryService = categoryService;
+        this.clientService = clientService;
     }
 
     public Boolean productEqualsCategory(String data) {
