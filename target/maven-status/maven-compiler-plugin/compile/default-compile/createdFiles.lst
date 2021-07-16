@@ -16,6 +16,7 @@ bot/cache/UserDataCache.class
 bot/dao/OrdersDao.class
 bot/config/SpringConfig.class
 bot/service/CardService.class
+bot/Bot.class
 bot/botApi/handlers/HelpMenuHandler.class
 bot/service/CategoryService.class
 bot/botApi/handlers/CardHandler.class
@@ -26,11 +27,7 @@ bot/controllers/WebHookController.class
 bot/dao/ClientsDao.class
 bot/entities/Product.class
 bot/botApi/handlers/MainMenuHandler.class
-bot/VladimirovichBot.class
 bot/botApi/handlers/InputMessageHandler.class
 bot/inlineKeyboards/ProductKeyboard.class
 bot/cache/DataCache.class
-bot/botApi/BotStateContext$1.class
-bot/botApi/handlers/UserCardData.class
-bot/botApi/handlers/ShowProfileHandler.class
 bot/inlineKeyboards/BucketKeyboard.class

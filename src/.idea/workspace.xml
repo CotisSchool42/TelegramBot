@@ -1,7 +1,60 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f7a6efcc-2568-45a1-b6fd-375eaf4a47a1" name="Default Changelist" comment="" />
+    <list default="true" id="f7a6efcc-2568-45a1-b6fd-375eaf4a47a1" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/java/bot/VladimirovichBot.java" beforeDir="false" afterPath="$PROJECT_DIR$/main/java/bot/Bot.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/java/bot/botApi/BotState.java" beforeDir="false" afterPath="$PROJECT_DIR$/main/java/bot/botApi/BotState.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/java/bot/botApi/BotStateContext.java" beforeDir="false" afterPath="$PROJECT_DIR$/main/java/bot/botApi/BotStateContext.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/java/bot/botApi/Facade.java" beforeDir="false" afterPath="$PROJECT_DIR$/main/java/bot/botApi/Facade.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/java/bot/botApi/handlers/ShowProfileHandler.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/java/bot/botApi/handlers/UserCardData.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/java/bot/cache/DataCache.java" beforeDir="false" afterPath="$PROJECT_DIR$/main/java/bot/cache/DataCache.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/java/bot/cache/UserDataCache.java" beforeDir="false" afterPath="$PROJECT_DIR$/main/java/bot/cache/UserDataCache.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/java/bot/config/SpringConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/main/java/bot/config/SpringConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/java/bot/controllers/WebHookController.java" beforeDir="false" afterPath="$PROJECT_DIR$/main/java/bot/controllers/WebHookController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/java/bot/dao/CategoriesDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/main/java/bot/dao/CategoriesDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/java/bot/dao/ClientsDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/main/java/bot/dao/ClientsDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/java/bot/dao/ProductsDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/main/java/bot/dao/ProductsDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/resources/pi.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/main/resources/mainPhoto/pi.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../target/TelegramBot.war" beforeDir="false" afterPath="$PROJECT_DIR$/../target/TelegramBot.war" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../target/TelegramBot.war.original" beforeDir="false" afterPath="$PROJECT_DIR$/../target/TelegramBot.war.original" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../target/TelegramBot/WEB-INF/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../target/TelegramBot/WEB-INF/classes/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../target/TelegramBot/WEB-INF/classes/bot/VladimirovichBot.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../target/TelegramBot/WEB-INF/classes/bot/botApi/BotState.class" beforeDir="false" afterPath="$PROJECT_DIR$/../target/TelegramBot/WEB-INF/classes/bot/botApi/BotState.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../target/TelegramBot/WEB-INF/classes/bot/botApi/BotStateContext$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../target/TelegramBot/WEB-INF/classes/bot/botApi/BotStateContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/../target/TelegramBot/WEB-INF/classes/bot/botApi/BotStateContext.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../target/TelegramBot/WEB-INF/classes/bot/botApi/Facade.class" beforeDir="false" afterPath="$PROJECT_DIR$/../target/TelegramBot/WEB-INF/classes/bot/botApi/Facade.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../target/TelegramBot/WEB-INF/classes/bot/botApi/handlers/ShowProfileHandler.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../target/TelegramBot/WEB-INF/classes/bot/botApi/handlers/UserCardData.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../target/TelegramBot/WEB-INF/classes/bot/cache/DataCache.class" beforeDir="false" afterPath="$PROJECT_DIR$/../target/TelegramBot/WEB-INF/classes/bot/cache/DataCache.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../target/TelegramBot/WEB-INF/classes/bot/cache/UserDataCache.class" beforeDir="false" afterPath="$PROJECT_DIR$/../target/TelegramBot/WEB-INF/classes/bot/cache/UserDataCache.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../target/TelegramBot/WEB-INF/classes/bot/config/SpringConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/../target/TelegramBot/WEB-INF/classes/bot/config/SpringConfig.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../target/TelegramBot/WEB-INF/classes/bot/controllers/WebHookController.class" beforeDir="false" afterPath="$PROJECT_DIR$/../target/TelegramBot/WEB-INF/classes/bot/controllers/WebHookController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../target/TelegramBot/WEB-INF/classes/bot/dao/CategoriesDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/../target/TelegramBot/WEB-INF/classes/bot/dao/CategoriesDao.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../target/TelegramBot/WEB-INF/classes/bot/dao/ClientsDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/../target/TelegramBot/WEB-INF/classes/bot/dao/ClientsDao.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../target/TelegramBot/WEB-INF/classes/bot/dao/OrdersDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/../target/TelegramBot/WEB-INF/classes/bot/dao/OrdersDao.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../target/TelegramBot/WEB-INF/classes/bot/service/ClientService.class" beforeDir="false" afterPath="$PROJECT_DIR$/../target/TelegramBot/WEB-INF/classes/bot/service/ClientService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../target/TelegramBot/WEB-INF/classes/messages.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../target/TelegramBot/WEB-INF/classes/messages.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../target/TelegramBot/WEB-INF/classes/pi.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../target/classes/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../target/classes/bot/VladimirovichBot.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../target/classes/bot/botApi/BotState.class" beforeDir="false" afterPath="$PROJECT_DIR$/../target/classes/bot/botApi/BotState.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../target/classes/bot/botApi/BotStateContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/../target/classes/bot/botApi/BotStateContext.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../target/classes/bot/botApi/Facade.class" beforeDir="false" afterPath="$PROJECT_DIR$/../target/classes/bot/botApi/Facade.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../target/classes/bot/botApi/handlers/ShowProfileHandler.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../target/classes/bot/botApi/handlers/UserCardData.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../target/classes/bot/cache/DataCache.class" beforeDir="false" afterPath="$PROJECT_DIR$/../target/classes/bot/cache/DataCache.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../target/classes/bot/cache/UserDataCache.class" beforeDir="false" afterPath="$PROJECT_DIR$/../target/classes/bot/cache/UserDataCache.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../target/classes/bot/config/SpringConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/../target/classes/bot/config/SpringConfig.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../target/classes/bot/controllers/WebHookController.class" beforeDir="false" afterPath="$PROJECT_DIR$/../target/classes/bot/controllers/WebHookController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../target/classes/bot/dao/CategoriesDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/../target/classes/bot/dao/CategoriesDao.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../target/classes/bot/dao/ClientsDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/../target/classes/bot/dao/ClientsDao.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../target/classes/pi.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/../target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/../target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -33,6 +86,8 @@
       <updated>1621784686185</updated>
       <workItem from="1621784687963" duration="2000" />
       <workItem from="1623152339338" duration="12000" />
+      <workItem from="1624807555377" duration="2000" />
+      <workItem from="1624808498547" duration="3000" />
     </task>
     <servers />
   </component>

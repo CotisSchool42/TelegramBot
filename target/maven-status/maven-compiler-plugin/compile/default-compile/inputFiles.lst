@@ -5,17 +5,16 @@
 /Users/over/TB/src/main/java/bot/entities/Order.java
 /Users/over/TB/src/main/java/bot/cache/UserDataCache.java
 /Users/over/TB/src/main/java/bot/botApi/BotStateContext.java
-/Users/over/TB/src/main/java/bot/botApi/handlers/ShowProfileHandler.java
 /Users/over/TB/src/main/java/bot/inlineKeyboards/ProductKeyboard.java
 /Users/over/TB/src/main/java/bot/controllers/WebHookController.java
 /Users/over/TB/src/main/java/bot/service/CategoryService.java
-/Users/over/TB/src/main/java/bot/botApi/handlers/UserCardData.java
 /Users/over/TB/src/main/java/bot/botApi/handlers/CardHandler.java
 /Users/over/TB/src/main/java/bot/cache/DataCache.java
 /Users/over/TB/src/main/java/bot/botApi/handlers/CategoriesHandler.java
 /Users/over/TB/src/main/java/bot/dao/OrdersDao.java
 /Users/over/TB/src/main/java/bot/entities/Product.java
 /Users/over/TB/src/main/java/bot/botApi/Facade.java
+/Users/over/TB/src/main/java/bot/Bot.java
 /Users/over/TB/src/main/java/bot/service/LocaleMessageService.java
 /Users/over/TB/src/main/java/bot/service/MainMenuService.java
 /Users/over/TB/src/main/java/bot/config/SpringConfig.java
@@ -28,7 +27,6 @@
 /Users/over/TB/src/main/java/bot/Main.java
 /Users/over/TB/src/main/java/bot/dao/ProductsDao.java
 /Users/over/TB/src/main/java/bot/dao/ClientsDao.java
-/Users/over/TB/src/main/java/bot/VladimirovichBot.java
 /Users/over/TB/src/main/java/bot/botApi/handlers/HelpMenuHandler.java
 /Users/over/TB/src/main/java/bot/entities/OrderList.java
 /Users/over/TB/src/main/java/bot/botApi/BotState.java

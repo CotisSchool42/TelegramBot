@@ -1,6 +1,6 @@
 package bot.controllers;
 
-import bot.VladimirovichBot;
+import bot.Bot;
 import lombok.Data;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -14,7 +14,7 @@ import org.telegram.telegrambots.meta.api.objects.Update;
 @Data
 @RestController
 public class WebHookController {
-    private final VladimirovichBot telegramBot;
+    private final Bot telegramBot;
 
     @PostMapping("/")
     public BotApiMethod<?> onUpdateReceived(@RequestBody Update update) {

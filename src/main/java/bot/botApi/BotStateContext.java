@@ -23,26 +23,6 @@ public class BotStateContext {
     }
 
     private InputMessageHandler findMessageHandler(BotState currentState) {
-
-/*        if (isFillingProfileState(currentState)) {
-            return messageHandlers.get(BotState.FILLING_PROFILE);
-        }*/
         return messageHandlers.get(currentState);
     }
-
-/*    private boolean isFillingProfileState(BotState currentState) {
-        switch (currentState) {
-            case ASK_NAME:
-            case ASK_COUNTRY:
-            case ASK_CITY:
-            case ASK_ADDRESS:
-            case ASK_PHONE:
-            case ASK_EMAIL:
-            case FILLING_PROFILE:
-            case PROFILE_FILLED:
-                return true;
-            default:
-                return false;
-        }
-    }*/
 }

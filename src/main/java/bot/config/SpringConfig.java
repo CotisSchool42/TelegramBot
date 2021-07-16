@@ -1,6 +1,6 @@
 package bot.config;
 
-import bot.VladimirovichBot;
+import bot.Bot;
 import bot.botApi.Facade;
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
@@ -34,12 +34,12 @@ public class SpringConfig {
      *  setUserName устанавливаем бота (также указывается при создании в BotFather)
      */
     @Bean
-    public VladimirovichBot vladimirovichBot(Facade facade) {
-        VladimirovichBot vladimirovichBot = new VladimirovichBot(facade);
-        vladimirovichBot.setWebHookPath(webHookPath);
-        vladimirovichBot.setBotToken(botToken);
-        vladimirovichBot.setUserName(userName);
-        return vladimirovichBot;
+    public Bot vladimirovichBot(Facade facade) {
+        Bot bot = new Bot(facade);
+        bot.setWebHookPath(webHookPath);
+        bot.setBotToken(botToken);
+        bot.setUserName(userName);
+        return bot;
     }
 
     /**

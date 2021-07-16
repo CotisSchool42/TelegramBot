@@ -20,22 +20,4 @@ public  class CategoriesDao {
         return jdbcTemplate.query("SELECT * FROM categories ORDER BY id", new BeanPropertyRowMapper<>(Category.class));
     }
 
-    public void addCategory(Category category) {
-        jdbcTemplate.update("INSERT INTO categories(name) VALUES (?)", category.getName());
-    }
-
-    public void deleteCategory(int id) {
-        jdbcTemplate.update("DELETE FROM categories WHERE id=?", id);
-    }
-
-    public Category editCategory(int id) {
-        System.out.println( jdbcTemplate.query("SELECT * FROM categories  WHERE id=?", new Object[]{id}, new BeanPropertyRowMapper<>(Category.class)).stream().findAny().orElse(null));
-        return jdbcTemplate.query("SELECT * FROM categories  WHERE id=?", new Object[]{id}, new BeanPropertyRowMapper<>(Category.class))
-                .stream().findAny().orElse(null);
-    }
-
-    public void updateCategory(int id, Category category) {
-        System.out.println(category.getName());
-        jdbcTemplate.update("UPDATE categories SET name=? WHERE id=?", category.getName(), id);
-    }
 }
